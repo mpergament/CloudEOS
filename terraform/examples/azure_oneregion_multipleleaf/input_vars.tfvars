@@ -1,24 +1,24 @@
 ## PLEASE CUSTOMIZE file for your deployment
 ## Search "mandatory" for parameters that need to be customized before deployment
-topology = "Azure" #mandatory
+topology = "tscl" #mandatory
 
 ## Get service_token from Arista Contact and replace empty string below
 cvaas = {
-  domain : "apiserver.arista.io",
-  server : "www.arista.io",
-  service_token : "" #mandatory
+  domain : "apiserver.cv-staging.corp.arista.io",
+  server : "www.cv-staging.corp.arista.io",
+  service_token : "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaWQiOjExOTU2LCJkc24iOiJ0cyIsImRzdCI6ImFjY291bnQiLCJzaWQiOiIwZTU3MTZiNmQ1NGE1MzljMThiNWMxZmU2YWExMDFhYzZmMzYyZDA2ZTc0Y2I1MmE1NWQ0YTRmNjIwMmQyOTQwLTZSZnUzZWZpMWxlQzhBRzJxYXhyOF9fd09EOEVOZmdQWGIxUzNBWnUifQ.qjjF9jReDopqUuhVqufeULX1bvEQbf5PBUWoR8WQrZcABwtN1ukAGHKowp7Do1_jxQRWPv9KFtjopw_2iCAJcQ" #mandatory
 }
 
 ## CloudEdge network requires three subnets for control plane.
-vtep_ip_cidr          = "172.16.0.0/24" // CIDR block for VTEP IPs
-terminattr_ip_cidr    = "172.16.1.0/24" // Loopback IP range for CloudVision connectivity
-dps_controlplane_cidr = "172.16.2.0/24" // CIDR block for VXLAN/Dps Control Plane IPs
+vtep_ip_cidr          = "24.0.1.0/24" // CIDR block for VTEP IPs
+terminattr_ip_cidr    = "24.0.2.0/24" // Loopback IP range for CloudVision connectivity
+dps_controlplane_cidr = "24.0.3.0/24" // CIDR block for VXLAN/Dps Control Plane IPs
 
 ## CloudVision container names - they need to be created on www.arista.io/cv
 ## before deployment. Steps to create containers on CloudVision are in
 ## "CloudEdgedev MultiCloud Deployment Guide"
-clos_cv_container = "CloudLeaf"
-wan_cv_container  = "CloudEdge"
+clos_cv_container = "amadeus_poc"
+wan_cv_container  = "amadeus_poc"
 
 azure_regions = {
   region1 : "westus2",
