@@ -4,7 +4,7 @@ resource "azurerm_network_security_group" "publicNSG" {
   count               = var.role == "CloudEdge" ? 1 : 0
   depends_on          = [data.azurerm_resource_group.rg]
   name                = var.nsg_name
-  location            = var.rg_location
+  location            = data.azurerm_resource_group.rg.location
   resource_group_name = var.rg_name
 
   security_rule {
@@ -49,7 +49,7 @@ resource "azurerm_network_security_group" "privateNSG" {
   count               = var.role != "CloudEdge" ? 1 : 0
   depends_on          = [data.azurerm_resource_group.rg]
   name                = "${var.nsg_name}-leaf"
-  location            = var.rg_location
+  location            = data.azurerm_resource_group.rg.location
   resource_group_name = var.rg_name
 
   security_rule {
@@ -99,7 +99,7 @@ resource "azurerm_virtual_network_peering" "peer1" {
 resource "azurerm_availability_set" "availSet" {
   count                       = var.availability_set ? 1 : 0
   name                        = "${var.rg_name}AvailSet"
-  location                    = var.rg_location
+  location                    = data.azurerm_resource_group.rg.location
   resource_group_name         = data.azurerm_resource_group.rg.name
   managed                     = true
   platform_fault_domain_count = 2

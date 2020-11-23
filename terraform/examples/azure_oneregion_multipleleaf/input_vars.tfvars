@@ -24,6 +24,21 @@ azure_regions = {
   region1 : "westus2",
 }
 
+static_rg_vnet_info = {
+  edge1: {
+    rg = "amadeus_hub_rg"
+    vnet = "amadeus_hub"
+  }
+  azureLeaf1: {
+    rg = "amadeus_spoke1_rg"
+    vnet = "amadeus_spoke1_hub"
+  }
+  azureLeaf2: {
+    rg = "amadeus_spoke2_rg"
+    vnet = "amadeus_spoke2_hub"
+  }
+}
+
 subnet_info = {
   edge1subnet : {
     subnet_prefixes = ["13.0.0.0/24", "13.0.1.0/24", "13.0.2.0/24", "13.0.3.0/24"]

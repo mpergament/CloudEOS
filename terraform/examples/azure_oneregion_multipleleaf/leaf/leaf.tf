@@ -14,11 +14,9 @@ variable "password" {}
 
 module "azureLeaf1" {
   source        = "../../../module/cloudeos/azure/rg"
-  rg_name       = "${var.topology}Leaf1"
   role          = "CloudLeaf"
-  rg_location   = "westus2"
-  vnet_name     = "${var.topology}Leaf1Vnet"
-  address_space = "16.0.0.0/16"
+  rg_name       = var.static_rg_vnet_info["azureLeaf1"]["rg"]
+  vnet_name     = var.static_rg_vnet_info["azureLeaf1"]["vnet"]
   nsg_name      = "${var.topology}Leaf1Nsg"
   topology_name = var.topology
   clos_name     = "${var.topology}-clos"
@@ -129,11 +127,9 @@ module "azureLeaf1host2" {
 
 module "azureLeaf2" {
   source        = "../../../module/cloudeos/azure/rg"
-  rg_name       = "${var.topology}Leaf2"
   role          = "CloudLeaf"
-  rg_location   = "westus2"
-  vnet_name     = "${var.topology}Leaf2Vnet"
-  address_space = "17.0.0.0/16"
+  rg_name       = var.static_rg_vnet_info["azureLeaf2"]["rg"]
+  vnet_name     = var.static_rg_vnet_info["azureLeaf2"]["vnet"]
   nsg_name      = "${var.topology}Leaf2Nsg"
   topology_name = var.topology
   clos_name     = "${var.topology}-clos"

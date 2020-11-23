@@ -34,12 +34,10 @@ resource "cloudeos_wan" "wan" {
 
 module "edge1" {
   source        = "../../../module/cloudeos/azure/rg"
-  address_space = "13.0.0.0/16"
   nsg_name      = "${var.topology}edge1Nsg"
   role          = "CloudEdge"
-  rg_name       = "amadeus_hub_rg"
-  rg_location   = var.azure_regions["region1"]
-  vnet_name     = "amadeus_hub"
+  rg_name       = var.static_rg_vnet_info["edge1"]["rg"]
+  vnet_name     = var.static_rg_vnet_info["edge1"]["vnet"]
   topology_name = cloudeos_topology.topology.topology_name
   clos_name     = cloudeos_clos.clos.name
   wan_name      = cloudeos_wan.wan.name

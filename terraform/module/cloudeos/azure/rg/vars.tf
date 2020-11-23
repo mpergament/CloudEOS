@@ -6,15 +6,6 @@ variable "rg_name" {
   description = "Default resource group name that the network will be created in."
 }
 
-variable "rg_location" {
-  description = "The location/region where the core network will be created."
-  default     = "westus"
-}
-
-variable "address_space" {
-  description = "The address space that is used by the virtual network."
-}
-
 variable "tags" {
   description = "Tags for the vnet"
   type        = map(string)
