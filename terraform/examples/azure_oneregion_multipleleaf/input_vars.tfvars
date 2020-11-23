@@ -26,7 +26,7 @@ azure_regions = {
 
 subnet_info = {
   edge1subnet : {
-    subnet_prefixes = ["12.0.0.0/24", "12.0.1.0/24", "12.0.2.0/24", "12.0.3.0/24"]
+    subnet_prefixes = ["13.0.0.0/24", "13.0.1.0/24", "13.0.2.0/24", "13.0.3.0/24"]
     subnet_names    = ["edge1Subnet0", "edge1Subnet1", "edge1Subnet2", "edge1Subnet3"]
   }
   leaf1subnet = {
@@ -48,7 +48,7 @@ cloudeos_info = {
       "edge1cloudeos1Intf1" = "internal"
     }
     disk_name              = "edge1cloudeos1disk"
-    private_ips            = { "0" : ["12.0.0.101"], "1" : ["12.0.1.101"] }
+    private_ips            = { "0" : ["13.0.0.101"], "1" : ["13.0.1.101"] }
     route_name             = "azedge1Rt"
     routetable_name        = "azedge1RtTable"
     filename               = "../../../userdata/eos_ipsec_config.tpl"
@@ -64,7 +64,7 @@ cloudeos_info = {
       "edge1cloudeos2Intf1" = "internal"
     }
     disk_name              = "edge1cloudeos2disk"
-    private_ips            = { "0" : ["12.0.2.101"], "1" : ["12.0.3.101"] }
+    private_ips            = { "0" : ["13.0.2.101"], "1" : ["13.0.3.101"] }
     route_name             = "azedge1cloudeos2Rt"
     routetable_name        = "azedge1cloudeos2RtTable"
     filename               = "../../../userdata/eos_ipsec_config.tpl"
