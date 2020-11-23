@@ -33,7 +33,7 @@ resource "cloudeos_wan" "wan" {
 }
 
 module "edge1" {
-  source        = "../../../module/cloudeos/azure/rg-static"
+  source        = "../../../module/cloudeos/azure/rg"
   address_space = "13.0.0.0/16"
   nsg_name      = "${var.topology}edge1Nsg"
   role          = "CloudEdge"
