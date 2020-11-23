@@ -7,11 +7,11 @@ resource "cloudeos_vpc_status" "vpc" {
   count             = var.topology_name != "" ? 1 : 0
   cloud_provider    = "azure"
   rg_name           = var.rg_name
-  vpc_id            = azurerm_virtual_network.vnet.id
+  vpc_id            = data.azurerm_virtual_network.vnet.id
   vnet_name         = var.vnet_name
-  region            = azurerm_virtual_network.vnet.location
+  region            = data.azurerm_virtual_network.vnet.location
   security_group_id = var.role == "CloudEdge" ? local.publicNSGId : local.privateNSGID
-  cidr_block        = azurerm_virtual_network.vnet.address_space[0]
+  cidr_block        = data.azurerm_virtual_network.vnet.address_space[0]
   role              = var.role
   topology_name     = var.topology_name
   tags              = var.tags
