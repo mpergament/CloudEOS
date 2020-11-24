@@ -101,7 +101,7 @@ module "azureLeaf1host1" {
   rg_location = "westus2"
   intf_name   = "host1Intf0"
   subnet_id   = module.azureLeaf1Subnet.vnet_subnets[1]
-  private_ip  = "16.0.1.10"
+  private_ip  = "18.0.1.10"
   disk_name   = "leaf1host1disk"
   tags = {
     "Name" : "host1azureLeaf1"
@@ -116,7 +116,7 @@ module "azureLeaf1host2" {
   rg_location = "westus2"
   intf_name   = "azurehost2Intf1"
   subnet_id   = module.azureLeaf1Subnet.vnet_subnets[3]
-  private_ip  = "16.0.3.10"
+  private_ip  = "18.0.3.10"
   disk_name   = "azureleaf1host2"
   tags = {
     "Name" : "azureleaf1host2"
@@ -184,7 +184,7 @@ module "azureLeaf2host1" {
   rg_location = "westus2"
   intf_name   = "host2Intf0"
   subnet_id   = module.azureLeaf2Subnet.vnet_subnets[1]
-  private_ip  = "17.0.1.10"
+  private_ip  = "19.0.1.10"
   disk_name   = "leaf2host1disk"
   tags = {
     "Name" : "host1azureLeaf2"
@@ -229,7 +229,7 @@ module "azureLeaf2host2" {
   rg_location = "westus2"
   intf_name   = "leaf2host2Intf0"
   subnet_id   = module.azureLeaf2Subnet.vnet_subnets[3]
-  private_ip  = "17.0.3.10"
+  private_ip  = "19.0.3.10"
   disk_name   = "leaf2host2disk"
   tags = {
     "Name" : "host2azureLeaf2"
