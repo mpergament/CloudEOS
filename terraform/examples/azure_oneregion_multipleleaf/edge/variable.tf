@@ -11,3 +11,4 @@ variable "clos_cv_container" {}
 variable "wan_cv_container" {}
 variable "subnet_info" {}
 variable "cloudeos_info" {}
+variable "static_rg_vnet_info" {}
