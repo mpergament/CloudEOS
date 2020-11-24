@@ -8,7 +8,7 @@ resource "cloudeos_vpc_config" "vpc" {
   cnps           = lookup(var.tags, "Cnps", "")
   tags           = var.tags
   vnet_name      = var.vnet_name
-  region         = var.rg_location
+  region         = data.azurerm_resource_group.rg.location
   topology_id    = var.topology_id
   wan_id         = var.wan_id
   clos_id        = var.clos_id
