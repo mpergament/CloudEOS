@@ -31,11 +31,11 @@ static_rg_vnet_info = {
   }
   azureLeaf1: {
     rg = "amadeus_spoke1_rg"
-    vnet = "amadeus_spoke1_hub"
+    vnet = "amadeus_spoke1_vnet"
   }
   azureLeaf2: {
     rg = "amadeus_spoke2_rg"
-    vnet = "amadeus_spoke2_hub"
+    vnet = "amadeus_spoke2_vnet"
   }
 }
 
@@ -45,11 +45,11 @@ subnet_info = {
     subnet_names    = ["edge1Subnet0", "edge1Subnet1", "edge1Subnet2", "edge1Subnet3"]
   }
   leaf1subnet = {
-    subnet_prefixes = ["16.0.0.0/24", "16.0.1.0/24", "16.0.2.0/24", "16.0.3.0/24"]
+    subnet_prefixes = ["18.0.0.0/24", "18.0.1.0/24", "18.0.2.0/24", "18.0.3.0/24"]
     subnet_names    = ["leaf1Subnet0", "leaf1Subnet1", "leaf1Subnet2", "leaf1Subnet3"]
   }
   leaf2subnet = {
-    subnet_prefixes = ["17.0.0.0/24", "17.0.1.0/24", "17.0.2.0/24", "17.0.3.0/24"]
+    subnet_prefixes = ["19.0.0.0/24", "19.0.1.0/24", "19.0.2.0/24", "19.0.3.0/24"]
     subnet_names    = ["leaf2Subnet0", "leaf2Subnet1", "leaf2Subnet2", "leaf2Subnet3"]
   }
 }
@@ -114,7 +114,7 @@ cloudeos_info = {
       "leaf1cloudeos1Intf0" = "internal"
       "leaf1cloudeos1Intf1" = "private"
     }
-    private_ips       = { "0" : ["16.0.0.101"], "1" : ["16.0.1.101"] }
+    private_ips       = { "0" : ["18.0.0.101"], "1" : ["18.0.1.101"] }
     tags              = { "Name" : "azleaf1cloudeos1", "Cnps" : "dev" }
     disk_name         = "leaf1cloudeos1disk"
     storage_name      = "azleaf1cloudeos1storage"
@@ -134,7 +134,7 @@ cloudeos_info = {
       "leaf1cloudeos2Intf0" = "internal"
       "leaf1cloudeos2Intf1" = "private"
     }
-    private_ips       = { "0" : ["16.0.2.101"], "1" : ["16.0.3.101"] }
+    private_ips       = { "0" : ["18.0.2.101"], "1" : ["18.0.3.101"] }
     tags              = { "Name" : "azleaf1cloudeos2", "Cnps" : "dev" }
     disk_name         = "leaf1cloudeos2disk"
     route_name        = "leaf1cloudeos2Rt1"
@@ -150,7 +150,7 @@ cloudeos_info = {
       "leaf2cloudeos1Intf1" = "private"
     }
     availability_zone      = [2]
-    private_ips            = { "0" : ["17.0.0.101"], "1" : ["17.0.1.101"] }
+    private_ips            = { "0" : ["19.0.0.101"], "1" : ["19.0.1.101"] }
     disk_name              = "leaf2cloudeos1disk"
     storage_name           = "leaf2cloudeos1storage"
     route_name             = "leaf2Rt1"
@@ -168,7 +168,7 @@ cloudeos_info = {
       "leaf2cloudeos2Intf1" = "private"
     }
     availability_zone      = [3]
-    private_ips            = { "0" : ["17.0.2.101"], "1" : ["17.0.3.101"] }
+    private_ips            = { "0" : ["19.0.2.101"], "1" : ["19.0.3.101"] }
     disk_name              = "leaf2cloudeos2disk"
     route_name             = "leaf2cloudeos2Rt1"
     routetable_name        = "leaf2cloudeos2RtTable1"
