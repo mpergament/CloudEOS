@@ -41,8 +41,8 @@ static_rg_vnet_info = {
 
 subnet_info = {
   edge1subnet : {
-    subnet_prefixes = ["13.0.0.0/24", "13.0.1.0/24", "13.0.2.0/24", "13.0.3.0/24"]
-    subnet_names    = ["edge1Subnet0", "edge1Subnet1", "edge1Subnet2", "edge1Subnet3"]
+    subnet_prefixes = ["13.0.0.0/24", "13.0.1.0/24", "13.0.2.0/24", "13.0.3.0/24", "13.0.10.0/24", "13.0.11.0/24"]
+    subnet_names    = ["edge1Subnet0", "edge1Subnet1", "edge1Subnet2", "edge1Subnet3", "edge1Subnet4", "edge1Subnet5"]
   }
   leaf1subnet = {
     subnet_prefixes = ["18.0.0.0/24", "18.0.1.0/24", "18.0.2.0/24", "18.0.3.0/24"]
@@ -57,13 +57,15 @@ subnet_info = {
 cloudeos_info = {
   edge1cloudeos1 : {
     publicip_name = "edge1cloudeos1Pip"
-    intf_names    = ["edge1cloudeos1Intf0", "edge1cloudeos1Intf1"]
+    intf_names    = ["edge1cloudeos1Intf0", "edge1cloudeos1Intf1", "edge1cloudeos1Intf2", "edge1cloudeos1Intf3"]
     interface_types = {
       "edge1cloudeos1Intf0" = "public"
       "edge1cloudeos1Intf1" = "internal"
+      "edge1cloudeos1Intf2" = "internal"
+      "edge1cloudeos1Intf3" = "internal"
     }
     disk_name              = "edge1cloudeos1disk"
-    private_ips            = { "0" : ["13.0.0.101"], "1" : ["13.0.1.101"] }
+    private_ips            = { "0" : ["13.0.0.101"], "1" : ["13.0.1.101"], "2" : ["13.0.10.101"], "3" : ["13.0.11.101"] }
     route_name             = "azedge1Rt"
     routetable_name        = "azedge1RtTable"
     filename               = "../../../userdata/eos_ipsec_config.tpl"
@@ -73,13 +75,15 @@ cloudeos_info = {
   }
   edge1cloudeos2 : {
     publicip_name = "edge1cloudeos2Pip"
-    intf_names    = ["edge1cloudeos2Intf0", "edge1cloudeos2Intf1"]
+    intf_names    = ["edge1cloudeos2Intf0", "edge1cloudeos2Intf1", "edge1cloudeos2Intf2", "edge1cloudeos2Intf3"]
     interface_types = {
       "edge1cloudeos2Intf0" = "public"
       "edge1cloudeos2Intf1" = "internal"
+      "edge1cloudeos2Intf2" = "internal"
+      "edge1cloudeos2Intf3" = "internal"
     }
     disk_name              = "edge1cloudeos2disk"
-    private_ips            = { "0" : ["13.0.2.101"], "1" : ["13.0.3.101"] }
+    private_ips            = { "0" : ["13.0.2.101"], "1" : ["13.0.3.101"], "2" : ["13.0.10.102"], "3" : ["13.0.11.102"] }
     route_name             = "azedge1cloudeos2Rt"
     routetable_name        = "azedge1cloudeos2RtTable"
     filename               = "../../../userdata/eos_ipsec_config.tpl"
