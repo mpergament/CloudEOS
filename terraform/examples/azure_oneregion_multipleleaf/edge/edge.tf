@@ -67,6 +67,8 @@ module "azureedge1cloudeos1" {
   subnetids = {
     "edge1cloudeos1Intf0" = module.edge1Subnet.vnet_subnets[0]
     "edge1cloudeos1Intf1" = module.edge1Subnet.vnet_subnets[1]
+    "edge1cloudeos1Intf2" = module.edge1Subnet.vnet_subnets[4]
+    "edge1cloudeos1Intf3" = module.edge1Subnet.vnet_subnets[5]
   }
   publicip_name   = var.cloudeos_info["edge1cloudeos1"]["publicip_name"]
   intf_names      = var.cloudeos_info["edge1cloudeos1"]["intf_names"]
@@ -95,6 +97,8 @@ module "azureedge1cloudeos2" {
   subnetids = {
     "edge1cloudeos2Intf0" = module.edge1Subnet.vnet_subnets[2]
     "edge1cloudeos2Intf1" = module.edge1Subnet.vnet_subnets[3]
+    "edge1cloudeos2Intf2" = module.edge1Subnet.vnet_subnets[4]
+    "edge1cloudeos2Intf3" = module.edge1Subnet.vnet_subnets[5]
   }
   availablity_set_id     = module.edge1.availability_set_id
   publicip_name          = var.cloudeos_info["edge1cloudeos2"]["publicip_name"]
