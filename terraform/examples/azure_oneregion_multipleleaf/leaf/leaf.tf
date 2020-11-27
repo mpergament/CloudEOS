@@ -66,7 +66,7 @@ module "azureLeaf1cloudeos1" {
   disk_name              = var.cloudeos_info["leaf1cloudeos1"]["disk_name"]
   private_ips            = {
     "0": [module.leaf1_get_ips[0].ip_availables[0]], 
-    "1": [module.leaf1_get_ips[1].ip_availables[0]]
+    "1": [module.leaf1_get_ips[1].ip_availables[1]]
   }
   availability_zone      = var.cloudeos_info["leaf1cloudeos1"]["availability_zone"]
   route_name             = var.cloudeos_info["leaf1cloudeos1"]["route_name"]
@@ -98,7 +98,7 @@ module "azureLeaf1cloudeos2" {
   disk_name              = var.cloudeos_info["leaf1cloudeos2"]["disk_name"]
   private_ips            = {
     "0": [module.leaf1_get_ips[2].ip_availables[0]], 
-    "1": [module.leaf1_get_ips[3].ip_availables[0]]
+    "1": [module.leaf1_get_ips[3].ip_availables[1]]
   }
   availability_zone      = var.cloudeos_info["leaf1cloudeos2"]["availability_zone"]
   route_name             = var.cloudeos_info["leaf1cloudeos2"]["route_name"]
@@ -120,7 +120,7 @@ module "azureLeaf1host1" {
   rg_location = "westus2"
   intf_name   = "host1Intf0"
   subnet_id   = module.azureLeaf1Subnet.vnet_subnets[1]
-  private_ip  = module.leaf1_get_ips[1].ip_availables[1]
+  private_ip  = module.leaf1_get_ips[1].ip_availables[2]
   disk_name   = "leaf1host1disk"
   tags = {
     "Name" : "host1azureLeaf1"
@@ -135,7 +135,7 @@ module "azureLeaf1host2" {
   rg_location = "westus2"
   intf_name   = "azurehost2Intf1"
   subnet_id   = module.azureLeaf1Subnet.vnet_subnets[3]
-  private_ip  = module.leaf1_get_ips[3].ip_availables[1]
+  private_ip  = module.leaf1_get_ips[3].ip_availables[2]
   disk_name   = "azureleaf1host2"
   tags = {
     "Name" : "azureleaf1host2"
@@ -194,7 +194,7 @@ module "azureLeaf2cloudeos1" {
   disk_name              = var.cloudeos_info["leaf2cloudeos1"]["disk_name"]
   private_ips            = {
     "0": [module.leaf2_get_ips[0].ip_availables[0]], 
-    "1": [module.leaf2_get_ips[1].ip_availables[0]]
+    "1": [module.leaf2_get_ips[1].ip_availables[1]]
   }
   route_name             = var.cloudeos_info["leaf2cloudeos1"]["route_name"]
   routetable_name        = var.cloudeos_info["leaf2cloudeos1"]["routetable_name"]
@@ -214,7 +214,7 @@ module "azureLeaf2host1" {
   rg_location = "westus2"
   intf_name   = "host2Intf0"
   subnet_id   = module.azureLeaf2Subnet.vnet_subnets[1]
-  private_ip  = module.leaf2_get_ips[1].ip_availables[1]
+  private_ip  = module.leaf2_get_ips[1].ip_availables[2]
   disk_name   = "leaf2host1disk"
   tags = {
     "Name" : "host1azureLeaf2"
@@ -241,7 +241,7 @@ module "azureLeaf2cloudeos2" {
   disk_name              = var.cloudeos_info["leaf2cloudeos2"]["disk_name"]
   private_ips            = {
     "0": [module.leaf2_get_ips[2].ip_availables[0]], 
-    "1": [module.leaf2_get_ips[3].ip_availables[0]]
+    "1": [module.leaf2_get_ips[3].ip_availables[1]]
   }
   route_name             = var.cloudeos_info["leaf2cloudeos2"]["route_name"]
   routetable_name        = var.cloudeos_info["leaf2cloudeos2"]["routetable_name"]
@@ -262,7 +262,7 @@ module "azureLeaf2host2" {
   rg_location = "westus2"
   intf_name   = "leaf2host2Intf0"
   subnet_id   = module.azureLeaf2Subnet.vnet_subnets[3]
-  private_ip  = module.leaf2_get_ips[3].ip_availables[1]
+  private_ip  = module.leaf2_get_ips[3].ip_availables[2]
   disk_name   = "leaf2host2disk"
   tags = {
     "Name" : "host2azureLeaf2"
