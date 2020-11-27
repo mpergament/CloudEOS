@@ -49,7 +49,7 @@ module "edge1" {
 
 module "edge1Subnet" {
   source          = "../../../module/cloudeos/azure/subnet"
-  subnet_prefixes = var.subnet_info["edge1subnet"]["subnet_prefixes"]
+#  subnet_prefixes = var.subnet_info["edge1subnet"]["subnet_prefixes"]
   subnet_names    = var.subnet_info["edge1subnet"]["subnet_names"]
   vnet_name       = module.edge1.vnet_name
   vnet_id         = module.edge1.vnet_id

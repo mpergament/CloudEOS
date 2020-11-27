@@ -41,15 +41,15 @@ static_rg_vnet_info = {
 
 subnet_info = {
   edge1subnet : {
-    subnet_prefixes = ["13.0.0.0/24", "13.0.1.0/24", "13.0.2.0/24", "13.0.3.0/24", "13.0.10.0/24", "13.0.11.0/24"]
+#    subnet_prefixes = ["13.0.0.0/24", "13.0.1.0/24", "13.0.2.0/24", "13.0.3.0/24", "13.0.10.0/24", "13.0.11.0/24"]
     subnet_names    = ["edge1Subnet0", "edge1Subnet1", "edge1Subnet2", "edge1Subnet3", "edge1Subnet4", "edge1Subnet5"]
   }
   leaf1subnet = {
-    subnet_prefixes = ["18.0.0.0/24", "18.0.1.0/24", "18.0.2.0/24", "18.0.3.0/24"]
+#   subnet_prefixes = ["18.0.0.0/24", "18.0.1.0/24", "18.0.2.0/24", "18.0.3.0/24"]
     subnet_names    = ["leaf1Subnet0", "leaf1Subnet1", "leaf1Subnet2", "leaf1Subnet3"]
   }
   leaf2subnet = {
-    subnet_prefixes = ["19.0.0.0/24", "19.0.1.0/24", "19.0.2.0/24", "19.0.3.0/24"]
+#   subnet_prefixes = ["19.0.0.0/24", "19.0.1.0/24", "19.0.2.0/24", "19.0.3.0/24"]
     subnet_names    = ["leaf2Subnet0", "leaf2Subnet1", "leaf2Subnet2", "leaf2Subnet3"]
   }
 }

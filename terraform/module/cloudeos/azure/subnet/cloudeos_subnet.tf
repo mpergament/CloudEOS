@@ -4,7 +4,7 @@ resource "cloudeos_subnet" "subnet" {
   vpc_id            = var.vnet_id
   vnet_name         = var.vnet_name
   availability_zone = ""
-  subnet_id         = azurerm_subnet.subnet[count.index].id
-  cidr_block        = azurerm_subnet.subnet[count.index].address_prefix
+  subnet_id         = data.azurerm_subnet.subnet[count.index].id
+  cidr_block        = data.azurerm_subnet.subnet[count.index].address_prefix
   subnet_name       = var.subnet_names[count.index]
 }
