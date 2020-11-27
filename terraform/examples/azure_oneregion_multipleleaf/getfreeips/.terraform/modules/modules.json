@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"get_ips","Source":"ados1991/Get-IpAvailablesAddressesSubnet/azure","Version":"1.0.1","Dir":".terraform/modules/get_ips"}]}
