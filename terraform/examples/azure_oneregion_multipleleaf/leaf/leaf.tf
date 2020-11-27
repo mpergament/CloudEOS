@@ -29,7 +29,7 @@ module "azureLeaf1" {
 
 module "azureLeaf1Subnet" {
   source          = "../../../module/cloudeos/azure/subnet"
-  subnet_prefixes = var.subnet_info["leaf1subnet"]["subnet_prefixes"]
+#  subnet_prefixes = var.subnet_info["leaf1subnet"]["subnet_prefixes"]
   subnet_names    = var.subnet_info["leaf1subnet"]["subnet_names"]
   vnet_name       = module.azureLeaf1.vnet_name
   vnet_id         = module.azureLeaf1.vnet_id
@@ -160,7 +160,7 @@ module "azureLeaf2" {
 
 module "azureLeaf2Subnet" {
   source          = "../../../module/cloudeos/azure/subnet"
-  subnet_prefixes = var.subnet_info["leaf2subnet"]["subnet_prefixes"]
+#  subnet_prefixes = var.subnet_info["leaf2subnet"]["subnet_prefixes"]
   subnet_names    = var.subnet_info["leaf2subnet"]["subnet_names"]
   vnet_name       = module.azureLeaf2.vnet_name
   vnet_id         = module.azureLeaf2.vnet_id
