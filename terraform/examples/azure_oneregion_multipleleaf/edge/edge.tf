@@ -57,6 +57,15 @@ module "edge1Subnet" {
   topology_name   = module.edge1.topology_name
 }
 
+module "get_ips" {
+  source = "ados1991/Get-IpAvailablesAddressesSubnet/azure"
+  subscription = "f1592ec1-9735-4a9b-b3c0-ef9854674431"
+  resource_group = module.edge1.rg_name
+  vnet_name = module.edge1.vnet_name
+  subnet_name = var.subnet_info["edge1subnet"]["subnet_names"][count.index]
+  count = length(var.subnet_info["edge1subnet"]["subnet_names"])
+}
+
 module "azureedge1cloudeos1" {
   source        = "../../../module/cloudeos/azure/router"
   vpc_info      = module.edge1.vpc_info
@@ -77,7 +86,7 @@ module "azureedge1cloudeos1" {
   availablity_set_id     = module.edge1.availability_set_id
   disk_name              = var.cloudeos_info["edge1cloudeos1"]["disk_name"]
   vm_size                = "Standard_D3_v2"
-  private_ips            = var.cloudeos_info["edge1cloudeos1"]["private_ips"]
+  private_ips            = {"0": [module.get_ips[0].ip_availables[0]], "1":  [module.get_ips[1].ip_availables[0]], "2": [module.get_ips[4].ip_availables[0]], "3":  [module.get_ips[5].ip_availables[0] ]}
   route_name             = var.cloudeos_info["edge1cloudeos1"]["route_name"]
   routetable_name        = var.cloudeos_info["edge1cloudeos1"]["routetable_name"]
   filename               = var.cloudeos_info["edge1cloudeos1"]["filename"]
@@ -107,7 +116,7 @@ module "azureedge1cloudeos2" {
   interface_types        = var.cloudeos_info["edge1cloudeos2"]["interface_types"]
   disk_name              = var.cloudeos_info["edge1cloudeos2"]["disk_name"]
   vm_size                = "Standard_D3_v2"
-  private_ips            = var.cloudeos_info["edge1cloudeos2"]["private_ips"]
+  private_ips            = {"0": [module.get_ips[2].ip_availables[0]], "1":  [module.get_ips[3].ip_availables[0]], "2": [module.get_ips[4].ip_availables[1]], "3":  [module.get_ips[5].ip_availables[1] ]}
   route_name             = var.cloudeos_info["edge1cloudeos2"]["route_name"]
   routetable_name        = var.cloudeos_info["edge1cloudeos2"]["routetable_name"]
   filename               = var.cloudeos_info["edge1cloudeos2"]["filename"]
