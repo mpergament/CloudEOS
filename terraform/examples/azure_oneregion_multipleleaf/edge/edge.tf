@@ -57,9 +57,12 @@ module "edge1Subnet" {
   topology_name   = module.edge1.topology_name
 }
 
+data "azurerm_subscription" "current" {
+}
+
 module "get_ips" {
   source = "ados1991/Get-IpAvailablesAddressesSubnet/azure"
-  subscription = "f1592ec1-9735-4a9b-b3c0-ef9854674431"
+  subscription = data.azurerm_subscription.current.subscription_id
   resource_group = module.edge1.rg_name
   vnet_name = module.edge1.vnet_name
   subnet_name = var.subnet_info["edge1subnet"]["subnet_names"][count.index]
