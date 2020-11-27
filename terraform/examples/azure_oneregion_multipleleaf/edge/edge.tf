@@ -89,7 +89,12 @@ module "azureedge1cloudeos1" {
   availablity_set_id     = module.edge1.availability_set_id
   disk_name              = var.cloudeos_info["edge1cloudeos1"]["disk_name"]
   vm_size                = "Standard_D3_v2"
-  private_ips            = {"0": [module.get_ips[0].ip_availables[0]], "1":  [module.get_ips[1].ip_availables[0]], "2": [module.get_ips[4].ip_availables[0]], "3":  [module.get_ips[5].ip_availables[0] ]}
+  private_ips            = {
+    "0": [module.get_ips[0].ip_availables[0]], 
+    "1": [module.get_ips[1].ip_availables[0]], 
+    "2": [module.get_ips[4].ip_availables[0]], 
+    "3": [module.get_ips[5].ip_availables[0]]
+  }
   route_name             = var.cloudeos_info["edge1cloudeos1"]["route_name"]
   routetable_name        = var.cloudeos_info["edge1cloudeos1"]["routetable_name"]
   filename               = var.cloudeos_info["edge1cloudeos1"]["filename"]
@@ -119,7 +124,12 @@ module "azureedge1cloudeos2" {
   interface_types        = var.cloudeos_info["edge1cloudeos2"]["interface_types"]
   disk_name              = var.cloudeos_info["edge1cloudeos2"]["disk_name"]
   vm_size                = "Standard_D3_v2"
-  private_ips            = {"0": [module.get_ips[2].ip_availables[0]], "1":  [module.get_ips[3].ip_availables[0]], "2": [module.get_ips[4].ip_availables[1]], "3":  [module.get_ips[5].ip_availables[1] ]}
+  private_ips            = {
+    "0": [module.get_ips[2].ip_availables[0]], 
+    "1": [module.get_ips[3].ip_availables[0]], 
+    "2": [module.get_ips[4].ip_availables[1]], 
+    "3": [module.get_ips[5].ip_availables[1]]
+  }
   route_name             = var.cloudeos_info["edge1cloudeos2"]["route_name"]
   routetable_name        = var.cloudeos_info["edge1cloudeos2"]["routetable_name"]
   filename               = var.cloudeos_info["edge1cloudeos2"]["filename"]
