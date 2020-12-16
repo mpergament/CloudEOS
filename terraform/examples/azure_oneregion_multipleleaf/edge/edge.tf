@@ -36,7 +36,8 @@ module "edge1" {
   source        = "../../../module/cloudeos/azure/rg"
   nsg_name      = "${var.topology}edge1Nsg"
   role          = "CloudEdge"
-  rg_name       = var.static_rg_vnet_info["edge1"]["rg"]
+  rg_eos_name   = var.static_rg_vnet_info["edge1"]["rg"]
+  rg_name       = var.static_rg_vnet_info["edge1"]["rg_vnet"]
   vnet_name     = var.static_rg_vnet_info["edge1"]["vnet"]
   topology_name = cloudeos_topology.topology.topology_name
   clos_name     = cloudeos_clos.clos.name
@@ -69,8 +70,14 @@ module "get_ips" {
   count = length(var.subnet_info["edge1subnet"]["subnet_names"])
 }
 
+data "azurerm_resource_group" "rg_cloud" {
+  name       = var.static_rg_vnet_info["edge1"]["rg"]
+}
+
 module "azureedge1cloudeos1" {
   source        = "../../../module/cloudeos/azure/router"
+  rg_name       = var.static_rg_vnet_info["edge1"]["rg"]
+  rg_location   = data.azurerm_resource_group.rg_cloud.location
   vpc_info      = module.edge1.vpc_info
   topology_name = module.edge1.topology_name
   role          = "CloudEdge"
@@ -107,6 +114,8 @@ module "azureedge1cloudeos1" {
 
 module "azureedge1cloudeos2" {
   source        = "../../../module/cloudeos/azure/router"
+  rg_name       = var.static_rg_vnet_info["edge1"]["rg"]
+  rg_location   = data.azurerm_resource_group.rg_cloud.location
   vpc_info      = module.edge1.vpc_info
   topology_name = module.edge1.topology_name
   role          = "CloudEdge"

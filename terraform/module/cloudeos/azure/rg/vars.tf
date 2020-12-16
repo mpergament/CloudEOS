@@ -6,6 +6,10 @@ variable "rg_name" {
   description = "Default resource group name that the network will be created in."
 }
 
+variable "rg_eos_name" {
+  description = "Default resource group name where all resources will be created in."
+}
+
 variable "tags" {
   description = "Tags for the vnet"
   type        = map(string)

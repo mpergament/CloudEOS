@@ -1,6 +1,6 @@
 locals {
-  rg_name         = var.vpc_info != [] ? var.vpc_info[2] : var.rg_name
-  rg_location     = var.vpc_info != [] ? var.vpc_info[3] : var.rg_location
+  rg_name         =  var.rg_name
+  rg_location     =  var.rg_location
   ilb_intfnames   = var.cloud_ha != "" && var.role == "CloudLeaf" ? [for key, value in var.interface_types : key if value == "private"] : []
   frontend_ilb_ip = var.primary == true && var.cloud_ha != "" && length(azurerm_lb.leafha_ilb.*.id) > 0 ? azurerm_lb.leafha_ilb[0].private_ip_address : var.cloud_ha != "" && var.frontend_ilb_ip != "" ? var.frontend_ilb_ip : ""
 }
@@ -60,6 +60,7 @@ resource "azurerm_public_ip" "publicip" {
   location            = local.rg_location
   resource_group_name = local.rg_name
   allocation_method   = "Static"
+  sku = "Standard"
   zones               = var.availability_zone
 }
 

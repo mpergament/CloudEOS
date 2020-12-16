@@ -2,10 +2,10 @@ data "azurerm_client_config" "current" {}
 
 resource "azurerm_network_security_group" "publicNSG" {
   count               = var.role == "CloudEdge" ? 1 : 0
-  depends_on          = [data.azurerm_resource_group.rg]
+  depends_on          = [data.azurerm_resource_group.rg_eos]
   name                = var.nsg_name
-  location            = data.azurerm_resource_group.rg.location
-  resource_group_name = var.rg_name
+  location            = data.azurerm_resource_group.rg_eos.location
+  resource_group_name = var.rg_eos_name
 
   security_rule {
     name                       = "allow_SSH"
@@ -47,10 +47,10 @@ resource "azurerm_network_security_group" "publicNSG" {
 
 resource "azurerm_network_security_group" "privateNSG" {
   count               = var.role != "CloudEdge" ? 1 : 0
-  depends_on          = [data.azurerm_resource_group.rg]
+  depends_on          = [data.azurerm_resource_group.rg_eos]
   name                = "${var.nsg_name}-leaf"
-  location            = data.azurerm_resource_group.rg.location
-  resource_group_name = var.rg_name
+  location            = data.azurerm_resource_group.rg_eos.location
+  resource_group_name = var.rg_eos_name
 
   security_rule {
     name                       = "allow_all"
@@ -72,6 +72,10 @@ data "azurerm_resource_group" "rg" {
 data "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
   resource_group_name = var.rg_name
+}
+
+data "azurerm_resource_group" "rg_eos" {
+  name       = var.rg_eos_name
 }
 
 //The check var.cvp is to be able to create peering connections if the user provides the peering information
@@ -98,9 +102,9 @@ resource "azurerm_virtual_network_peering" "peer1" {
 
 resource "azurerm_availability_set" "availSet" {
   count                       = var.availability_set ? 1 : 0
-  name                        = "${var.rg_name}AvailSet"
-  location                    = data.azurerm_resource_group.rg.location
-  resource_group_name         = data.azurerm_resource_group.rg.name
+  name                        = "${var.rg_eos_name}AvailSet"
+  location                    = data.azurerm_resource_group.rg_eos.location
+  resource_group_name         = data.azurerm_resource_group.rg_eos.name
   managed                     = true
   platform_fault_domain_count = 2
 }
