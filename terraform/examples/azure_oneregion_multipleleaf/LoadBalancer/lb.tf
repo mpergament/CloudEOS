@@ -7,11 +7,11 @@ locals {
   rg         = var.static_rg_vnet_info["edge1"]["rg"]
   vnet       = var.static_rg_vnet_info["edge1"]["vnet"]
   edge1subnets = ["edge1cloudeos1Intf0", "edge1cloudeos1Intf1", "edge1cloudeos1Intf2",
-                  "edge1cloudeos1Intf3", "edge1cloudeos1Intf4", "edge1cloudeos1Intf5",
-                  "edge1cloudeos1Intf6", "edge1cloudeos1Intf7"]
+                  "edge1cloudeos1Intf3"/*, "edge1cloudeos1Intf4", "edge1cloudeos1Intf5",
+                  "edge1cloudeos1Intf6", "edge1cloudeos1Intf7"*/]
   edge2subnets = ["edge2cloudeos1Intf0", "edge2cloudeos1Intf1", "edge2cloudeos1Intf2",
-                  "edge2cloudeos1Intf3", "edge2cloudeos1Intf4", "edge2cloudeos1Intf5",
-                  "edge2cloudeos1Intf6", "edge2cloudeos1Intf7"]
+                  "edge2cloudeos1Intf3"/*, "edge2cloudeos1Intf4", "edge2cloudeos1Intf5",
+                  "edge2cloudeos1Intf6", "edge2cloudeos1Intf7"*/]
 }
 
 data "azurerm_resource_group" "rg" {
