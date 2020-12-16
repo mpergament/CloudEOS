@@ -109,5 +109,23 @@ resource "azurerm_network_interface_backend_address_pool_association" "intfpool1
 resource "azurerm_lb_backend_address_pool" "pool1" {
   resource_group_name = local.rg
   loadbalancer_id     = azurerm_lb.cloudedgelb.id
-  name                = "CloudEOSPool1"
+  name                = "Amadeus-Onprem-DC-Backend"
+}
+
+resource "azurerm_network_interface_backend_address_pool_association" "intfpool2association1" {
+  network_interface_id    = data.azurerm_network_interface.edge1ifs[3].id
+  ip_configuration_name   = local.edge1subnets[3]
+  backend_address_pool_id = azurerm_lb_backend_address_pool.pool1.id
+}
+
+resource "azurerm_network_interface_backend_address_pool_association" "intfpool2association2" {
+  network_interface_id    = data.azurerm_network_interface.edge2ifs[3].id
+  ip_configuration_name   = local.edge2subnets[3]
+  backend_address_pool_id = azurerm_lb_backend_address_pool.pool2.id
+}
+
+resource "azurerm_lb_backend_address_pool" "pool2" {
+  resource_group_name = local.rg
+  loadbalancer_id     = azurerm_lb.cloudedgelb.id
+  name                = "Amadeus-Onprem-Spoke-Backend"
 }
