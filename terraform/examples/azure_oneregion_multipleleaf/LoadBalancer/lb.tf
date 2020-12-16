@@ -47,8 +47,8 @@ resource "azurerm_lb_rule" "rule1" {
   frontend_port                  = 0
   backend_port                   = 0
   frontend_ip_configuration_name = "Amadeus-IP1"
-  backend_address_pool_id        = azurerm_lb_backend_address_pool.pool1[0].id
-  probe_id                       = azurerm_lb_probe.probe[0].id
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.pool1.id
+  probe_id                       = azurerm_lb_probe.probe.id
   load_distribution              = "Default"
 }
 
@@ -63,7 +63,7 @@ resource "azurerm_lb_probe" "probe" {
 resource "azurerm_network_interface_backend_address_pool_association" "intfpoolassociation1" {
   network_interface_id    = azurerm_network_interface.firstif.id
   ip_configuration_name   = "edge1cloudeos1Intf0"
-  backend_address_pool_id = azurerm_lb_backend_address_pool.pool1[0].id
+  backend_address_pool_id = azurerm_lb_backend_address_pool.pool1.id
 }
 
 resource "azurerm_lb_backend_address_pool" "pool1" {
