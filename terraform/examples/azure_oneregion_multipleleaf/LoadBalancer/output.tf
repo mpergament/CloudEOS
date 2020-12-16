@@ -30,5 +30,6 @@ output "vnet_address_space" {
 
 output "azurerm_subnet" {
   description = "The address space of the  vNet"
-  value       = data.azurerm_subnet.subnet
+  value       = data.azurerm_subnet.subnet[count.index].id
+  count       = length(data.azurerm_subnet.subnet)
 }
