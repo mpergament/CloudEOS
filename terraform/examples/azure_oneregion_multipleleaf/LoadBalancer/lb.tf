@@ -20,7 +20,7 @@ data "azurerm_subnet" "subnet" {
 }
 
 data "azurerm_network_interface" "firstif" {
-  name                = join("", [var.cloudeos_info[0], "Intf0"])
+  name                = "edge1cloudeos1Intf0"
   resource_group_name = var.static_rg_vnet_info["edge1"]["rg"]
 }
 
