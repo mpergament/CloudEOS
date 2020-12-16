@@ -19,6 +19,11 @@ data "azurerm_subnet" "subnet" {
   count                = length(var.subnet_info["edge1subnet"]["subnet_names"])
 }
 
+data "azurerm_network_interface" "firstif" {
+  name                = join("", [var.cloudeos_info[0], "Intf0"])
+  resource_group_name = var.static_rg_vnet_info["edge1"]["rg"]
+}
+
 resource "azurerm_lb" "leafha_ilb" {
   name                = "AMADEUS-TEST"
   location            = data.azurerm_virtual_network.vnet.location

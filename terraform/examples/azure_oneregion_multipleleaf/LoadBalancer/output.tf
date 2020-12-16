@@ -32,3 +32,8 @@ output "azurerm_subnet" {
   description = "The address space of the  vNet"
   value       = data.azurerm_subnet.subnet
 }
+
+output "azurerm_network_interface" {
+  description = "First interface on VM"
+  value       = data.azurerm_network_interface.firstif
+}
