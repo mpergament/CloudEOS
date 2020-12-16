@@ -115,7 +115,7 @@ resource "azurerm_lb_backend_address_pool" "pool1" {
 resource "azurerm_network_interface_backend_address_pool_association" "intfpool2association1" {
   network_interface_id    = data.azurerm_network_interface.edge1ifs[3].id
   ip_configuration_name   = local.edge1subnets[3]
-  backend_address_pool_id = azurerm_lb_backend_address_pool.pool1.id
+  backend_address_pool_id = azurerm_lb_backend_address_pool.pool2.id
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "intfpool2association2" {
