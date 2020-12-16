@@ -41,7 +41,7 @@ resource "azurerm_lb" "cloudedgelb" {
 
 resource "azurerm_lb_rule" "rule1" {
   resource_group_name            = var.static_rg_vnet_info["edge1"]["rg"]
-  loadbalancer_id                = azurerm_lb.cloudedgelb[0].id
+  loadbalancer_id                = azurerm_lb.cloudedgelb.id
   name                           = "rule1"
   protocol                       = "All"
   frontend_port                  = 0
@@ -54,7 +54,7 @@ resource "azurerm_lb_rule" "rule1" {
 
 resource "azurerm_lb_probe" "probe" {
   resource_group_name = var.static_rg_vnet_info["edge1"]["rg"]
-  loadbalancer_id     = azurerm_lb.cloudedgelb[0].id
+  loadbalancer_id     = azurerm_lb.cloudedgelb.id
   name                = "ssh-probe"
   port                = 22
   protocol            = "Tcp"
@@ -68,6 +68,6 @@ resource "azurerm_network_interface_backend_address_pool_association" "intfpoola
 
 resource "azurerm_lb_backend_address_pool" "pool1" {
   resource_group_name = var.static_rg_vnet_info["edge1"]["rg"]
-  loadbalancer_id     = azurerm_lb.cloudedgelb[0].id
+  loadbalancer_id     = azurerm_lb.cloudedgelb.id
   name                = "CloudEOSPool1"
 }
