@@ -61,7 +61,7 @@ resource "azurerm_lb_probe" "probe" {
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "intfpoolassociation1" {
-  network_interface_id    = azurerm_network_interface.firstif.id
+  network_interface_id    = data.azurerm_network_interface.firstif.id
   ip_configuration_name   = "edge1cloudeos1Intf0"
   backend_address_pool_id = azurerm_lb_backend_address_pool.pool1.id
 }
