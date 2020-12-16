@@ -9,9 +9,9 @@ locals {
   edge1subnets = ["edge1cloudeos1Intf0", "edge1cloudeos1Intf1", "edge1cloudeos1Intf2",
                   "edge1cloudeos1Intf3"/*, "edge1cloudeos1Intf4", "edge1cloudeos1Intf5",
                   "edge1cloudeos1Intf6", "edge1cloudeos1Intf7"*/]
-  edge2subnets = ["edge2cloudeos1Intf0", "edge2cloudeos1Intf1", "edge2cloudeos1Intf2",
-                  "edge2cloudeos1Intf3"/*, "edge2cloudeos1Intf4", "edge2cloudeos1Intf5",
-                  "edge2cloudeos1Intf6", "edge2cloudeos1Intf7"*/]
+  edge2subnets = ["edge1cloudeos2Intf0", "edge1cloudeos2Intf1", "edge1cloudeos2Intf2",
+                  "edge1cloudeos2Intf3"/*, "edge1cloudeos2Intf4", "edge1cloudeos2Intf5",
+                  "edge1cloudeos2Intf6", "edge1cloudeos2Intf7"*/]
 }
 
 data "azurerm_resource_group" "rg" {
