@@ -55,7 +55,7 @@ resource "azurerm_lb" "cloudedgelb" {
     name      = "Amadeus-Spoke-DC"
     subnet_id = data.azurerm_subnet.subnet[3].id
   }
-  frontend_ip_configuration {
+/*  frontend_ip_configuration {
     name      = "Amadeus-Onprem-EXT"
     subnet_id = data.azurerm_subnet.subnet[4].id
   }
@@ -70,7 +70,7 @@ resource "azurerm_lb" "cloudedgelb" {
   frontend_ip_configuration {
     name      = "Amadeus-Spoke-INT"
     subnet_id = data.azurerm_subnet.subnet[7].id
-  }
+  } */
 }
 
 resource "azurerm_lb_rule" "rule1" {
