@@ -5,6 +5,7 @@ provider "azurerm" {
 
 locals {
   rg         = var.static_rg_vnet_info["edge1"]["rg"]
+  rg_vnet    = var.static_rg_vnet_info["edge1"]["rg_vnet"]
   vnet       = var.static_rg_vnet_info["edge1"]["vnet"]
   edge1subnets = ["edge1cloudeos1Intf0", "edge1cloudeos1Intf1", "edge1cloudeos1Intf2",
                   "edge1cloudeos1Intf3"/*, "edge1cloudeos1Intf4", "edge1cloudeos1Intf5",
@@ -14,19 +15,15 @@ locals {
                   "edge1cloudeos2Intf6", "edge1cloudeos2Intf7"*/]
 }
 
-data "azurerm_resource_group" "rg" {
-  name       = local.rg
-}
-
 data "azurerm_virtual_network" "vnet" {
   name                = local.vnet
-  resource_group_name = local.rg
+  resource_group_name = local.rg_vnet
 }
 
 data "azurerm_subnet" "subnet" {
   name                 = var.subnet_info["edge1subnet"]["subnet_names"][count.index]
   virtual_network_name = local.vnet
-  resource_group_name  = local.rg
+  resource_group_name  = local.rg_vnet
   count                = length(var.subnet_info["edge1subnet"]["subnet_names"])
 }
 
