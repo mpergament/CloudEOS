@@ -74,13 +74,13 @@ resource "azurerm_network_interface" "allIntfs" {
 
   dynamic "ip_configuration" {
     for_each = [for s in lookup(var.private_ips, tostring(count.index), []): {
-      name                          = format("%s%s", var.intf_names[count.index], s) 
+      name                          = var.intf_names[count.index]
       subnet_id                     = lookup(var.subnetids, var.intf_names[count.index], null)
       private_ip_address_allocation = lookup(var.private_ips, tostring(count.index), []) != [] ? "Static" : "Dynamic"
       private_ip_address            = s
     }]
     content {
-      name                          = ip_configuration.value.name
+      name                          = format("%s%s", ip_configuration.value.name, ip_configuration.key)
       subnet_id                     = ip_configuration.value.subnet_id
       private_ip_address_allocation = ip_configuration.value.private_ip_address_allocation
       private_ip_address            = ip_configuration.value.private_ip_address
